@@ -9,7 +9,7 @@ import { headers } from "next/headers";
 import ratelimit from "../ratelimit";
 import { redirect } from "next/navigation";
 import { workflowClient } from "../workflow";
-import config from "../config";
+import config from "../config"
 
 export const signInWithCredentials = async(params:Pick<AuthCredentials, "email"| "password">)=>{
   const {email,password} = params;
