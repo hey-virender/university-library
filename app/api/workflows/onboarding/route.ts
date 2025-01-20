@@ -73,7 +73,7 @@ export const { POST } = serve<InitialData>(async (context) => {
       })
     }
 
-    await context.sleep("wait-for-3-days",THREE_DAYS_IN_MS
+    await context.sleep("wait-for-3-days",THREE_DAYS_IN_MS)
   }
 })
 
