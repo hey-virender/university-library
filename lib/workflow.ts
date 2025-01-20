@@ -11,6 +11,8 @@ export const workflowClient = new WorkflowClient({
 const qstashClient = new QStashClient({ token: config.env.upstash.qstashToken });
 
 
+
+
 export const sendEmail = async ({email,subject,message} : { email:string;subject:string;message:string}) => {
   await qstashClient.publishJSON({
     api: {
@@ -18,7 +20,7 @@ export const sendEmail = async ({email,subject,message} : { email:string;subject
       provider: resend({ token: config.env.resendToken }),
     },
     body: {
-      from: "Acme <onboarding@resend.dev>",
+      from: "Virender Chauhan <hello.virenderchauhan.in>",
       to: email,
       subject: subject,
       html:message,
