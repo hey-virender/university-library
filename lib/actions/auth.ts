@@ -53,7 +53,7 @@ if(!success) return redirect("/too-fast")
       universityCard,
     })
     await workflowClient.trigger({
-      url:`${config.env.apiEndpoint}/api/workflows/onboarding`,
+      url:`${config.env.prodApiEndpoint}/api/workflows/onboarding`,
       body:{
         email,
         fullName,
