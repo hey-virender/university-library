@@ -13,7 +13,7 @@ type InitialData = {
 
 const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000
 const THREE_DAYS_IN_MS = ONE_DAY_IN_MS * 3
-const THIRTY_DAYS_IN_MS = THREE_DAYS_IN_MS * 10
+const SEVEN_DAYS_IN_MS = ONE_DAY_IN_MS * 7
 
 
 const getUserState = async(email:string): Promise<UserState> => {
@@ -28,7 +28,7 @@ const getUserState = async(email:string): Promise<UserState> => {
         const now = new Date();
         const timeDifference = now.getTime() - lastActivityDate.getTime()
 
-        if (timeDifference > THREE_DAYS_IN_MS && timeDifference < THIRTY_DAYS_IN_MS) {
+        if (timeDifference > THREE_DAYS_IN_MS && timeDifference < SEVEN_DAYS_IN_MS) {
           return "non-active"
         }
         return "active"
@@ -48,7 +48,7 @@ export const { POST } = serve<InitialData>(async (context) => {
     })
   })
 
-  await context.sleep("wait-for-3-days", THREE_DAYS_IN_MS)
+  await context.sleep("wait-for-3-days", '3d')
 
   while (true) {
     const state = await context.run("check-user-state", async () => {
@@ -73,7 +73,7 @@ export const { POST } = serve<InitialData>(async (context) => {
       })
     }
 
-    await context.sleep("wait-for-3-days",THREE_DAYS_IN_MS)
+    await context.sleep("wait-for-3-days",'3d')
   }
 })
 
